@@ -39,7 +39,7 @@ test('install a preferGlobal dependency without warning', function (t) {
     t.ifError(err, 'packages were installed')
     t.notMatch(
       stderr,
-      /preferGlobal/,
+      /WARN.*prefer global/,
       'install should not warn when dependency is preferGlobal')
     t.end()
   })
@@ -52,9 +52,10 @@ test('install a preferGlobal dependency without warning', function (t) {
     '--loglevel=warn'
   ], {}, function (err, code, stdout, stderr) {
     t.ifError(err, 'packages were installed')
+    console.log(stderr)
     t.notMatch(
       stderr,
-      /preferGlobal/,
+      /WARN.*prefer global/,
       'install should not warn when devDependency is preferGlobal')
     t.end()
   })
